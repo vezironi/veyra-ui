@@ -149,7 +149,7 @@
 	<div
 		:class="
 			cn(
-				'w-full rounded-xl border border-border bg-bg-surface p-3',
+				'w-full rounded-2xl border border-border bg-bg-surface p-3',
 				props.class,
 			)
 		"
@@ -169,7 +169,7 @@
 			@click="!holdRequired && activate()"
 		>
 			<kbd
-				class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-bg-muted text-sm font-semibold text-text-primary shadow-sm"
+				class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-bg-muted text-sm font-semibold text-text-primary"
 				>{{ keyLabel }}</kbd
 			>
 			<span class="min-w-0 flex-1">

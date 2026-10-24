@@ -337,7 +337,7 @@
 				ref="panelRef"
 				role="dialog"
 				:aria-label="label ? `${label} picker` : 'Color picker'"
-				class="fixed z-[9999] w-72 max-w-[calc(100vw-1rem)] overflow-y-auto rounded-xl border border-border bg-bg-base p-3 shadow-xl"
+				class="fixed z-[9999] w-72 max-w-[calc(100vw-1rem)] overflow-y-auto rounded-xl border border-border bg-bg-surface p-3"
 				:style="panelStyle"
 				@keydown.esc="open = false"
 			>

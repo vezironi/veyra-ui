@@ -41,7 +41,7 @@ Every component accepts a `class` prop. Its classes are merged with the componen
 
 ## Components
 
-Accordion, Alert, Avatar, Badge, Breadcrumbs, Button, Calendar, Card, Checkbox, Combobox, CommandPalette, ColorPicker, DataTable, DatePicker, Drawer, DropdownMenu, EmptyState, FileUpload, Inputs, InteractionPrompt, Kbd, Modal, MultiSelectMenu, ObjectiveTracker, Pagination, Popover, Progress, RadioGroup, SelectMenu, Separator, ShopItem, Skeleton, Slider, Spinner, StatCard, Switch, Tabs, TargetList, Textarea, ThemeToggle, Toast, Toggle, Tooltip
+Accordion, Alert, AnimatedNumber, Avatar, AvatarGroup, Badge, Breadcrumbs, Button, Calendar, Card, Checkbox, Combobox, CommandPalette, ColorPicker, DataTable, DatePicker, Drawer, DropdownMenu, EmptyState, FileUpload, Inputs, InteractionPrompt, Kbd, Modal, MultiSelectMenu, ObjectiveTracker, Pagination, Popover, Progress, RadioGroup, SelectMenu, Separator, ShopItem, Skeleton, Slider, Spinner, StatCard, Switch, Tabs, TargetList, Textarea, ThemeToggle, Toast, Toggle, Tooltip
 
 ### Component highlights
 
@@ -170,6 +170,8 @@ Colors are defined as CSS variables. Override them to customize the theme:
 ```
 
 Tokens: `--color-bg-base`, `--color-bg-surface`, `--color-bg-muted`, `--color-bg-muted-hover`, `--color-bg-muted-active`, `--color-bg-elevated`, `--color-border`, `--color-text-primary`, `--color-text-muted`, `--color-text-faint`, `--color-ring`, `--color-inverse`, `--color-text-inverse`, `--color-bg-inset`, `--color-success`, `--color-danger`, `--color-warning`, `--color-info`.
+
+The default font stack starts with [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) (`--font-sans`). The package does not bundle the font, so load it in your app (for example from Google Fonts or a self-hosted copy for offline NUI pages). Without it, text falls back to the system sans-serif font.
 
 ## Notes on the stylesheet
 

@@ -47,7 +47,7 @@
 		<div
 			v-if="open"
 			:role="variant === 'danger' ? 'alert' : 'status'"
-			:class="cn('flex w-full max-w-sm items-start gap-3 rounded-lg border border-border bg-bg-base p-3.5 shadow-xl', props.class)"
+			:class="cn('flex w-full max-w-sm items-start gap-3 rounded-xl border border-border bg-bg-surface p-3.5', props.class)"
 		>
 			<component
 				:is="variants[variant].icon"

@@ -38,7 +38,7 @@ function toggle(value: string) {
     <div
         :class="cn(
             'w-full',
-            { 'rounded-lg border border-border bg-bg-surface divide-y divide-border': variant === 'default' },
+            { 'rounded-2xl border border-border bg-bg-surface divide-y divide-border': variant === 'default' },
             props.class,
         )"
     >

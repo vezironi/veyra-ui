@@ -218,7 +218,7 @@ onBeforeUnmount(() => {
             <button
                 ref="triggerRef"
                 type="button"
-                class="flex w-full items-center justify-between gap-2 rounded-md border border-border transition-colors"
+                class="flex w-full items-center justify-between gap-2 rounded-lg border border-border transition-colors"
                 :class="[
                     sizes[size].trigger,
                     disabled
@@ -249,7 +249,7 @@ onBeforeUnmount(() => {
                 <div
                     v-if="open"
                     ref="menuRef"
-                    class="fixed z-[9999] overflow-y-auto rounded-md border border-border bg-bg-base shadow-2xl"
+                    class="fixed z-[9999] overflow-y-auto rounded-xl border border-border bg-bg-surface"
                     :style="menuStyle"
                     role="listbox"
                 >

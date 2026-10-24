@@ -40,7 +40,7 @@ const activeColor = computed(() =>
 <template>
     <div
         role="alert"
-        :class="cn('flex w-full items-start gap-x-2.5 rounded-md border border-border bg-bg-surface px-3 py-2.5', props.class)"
+        :class="cn('flex w-full items-start gap-x-2.5 rounded-xl border border-border bg-bg-surface px-3 py-2.5', props.class)"
         :style="activeColor
             ? {
                 background: `color-mix(in srgb, ${activeColor} 8%, transparent)`,

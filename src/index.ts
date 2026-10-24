@@ -2,7 +2,10 @@ import "./style.css";
 
 export { default as Accordion } from "./components/Accordion.vue";
 export { default as Alert } from "./components/Alert.vue";
+export { default as AnimatedNumber } from "./components/AnimatedNumber.vue";
 export { default as Avatar } from "./components/Avatar.vue";
+export { default as AvatarGroup } from "./components/AvatarGroup.vue";
+export type { AvatarGroupItem } from "./components/AvatarGroup.vue";
 export { default as Badge } from "./components/Badge.vue";
 export { default as Breadcrumbs } from "./components/Breadcrumbs.vue";
 export type { BreadcrumbItem } from "./components/Breadcrumbs.vue";

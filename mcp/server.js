@@ -15,7 +15,9 @@ const packageManifest = JSON.parse(await readFile(join(packageRoot, "package.jso
 const descriptions = {
 	Accordion: "Expandable disclosure sections for grouped content.",
 	Alert: "Inline status and feedback messages for success, warnings, and errors.",
-	Avatar: "User or character avatar with fallback initials and status indicator.",
+	AnimatedNumber: "Inline number or formatted value where only the changed digits roll when it updates.",
+	Avatar: "User or character avatar with fallback initials and a status dot (online, offline, do not disturb) that shows its status in a tooltip on hover.",
+	AvatarGroup: "Overlapping stack of avatars with an optional max, a +N overflow count, and optional name tooltips on hover.",
 	Badge: "Compact status, category, or count label.",
 	Breadcrumbs: "Navigation trail with collapsed middle items.",
 	Button: "Theme-aware action button with primary, secondary, solid, outline, danger, success, and warning variants.",
@@ -31,7 +33,7 @@ const descriptions = {
 	DropdownMenu: "Accessible action menu with separators, shortcuts, and disabled items.",
 	EmptyState: "Empty collection placeholder with message and optional action.",
 	FileUpload: "File picker with drag and drop, validation, and upload progress.",
-	Inputs: "Theme-aware single-line text, number, and form input.",
+	Inputs: "Theme-aware single-line text, password (with show/hide toggle), email, number (with +/- stepper), and date input.",
 	InteractionPrompt: "Game interaction prompt with key hint and optional hold progress.",
 	Kbd: "Inline keyboard keycap for shortcuts and interaction hints.",
 	Modal: "Centered dialog for focused forms, decisions, and confirmations.",
@@ -47,7 +49,7 @@ const descriptions = {
 	Skeleton: "Animated placeholder for loading content.",
 	Slider: "Accessible range input with optional label and value.",
 	Spinner: "Small loading indicator with multiple animation styles.",
-	StatCard: "Compact metric card with label, value, and optional accent.",
+	StatCard: "Metric card with label, animated value, optional icon, suffix (e.g. / 256), and percentage trend with a comparison label.",
 	Switch: "Accessible two-state toggle switch.",
 	Tabs: "Tabbed navigation with controlled active panel.",
 	TargetList: "Nearby players, entities, or interactions with distance and selection.",
@@ -55,7 +57,7 @@ const descriptions = {
 	ThemeToggle: "Control for switching between the package dark and light themes.",
 	Toast: "Transient status notification with close and action support.",
 	Toggle: "Single pressed or unpressed action control.",
-	Tooltip: "Small descriptive popup shown on hover or focus.",
+	Tooltip: "Small descriptive popup shown on hover or focus, with an optional arrow pointing at the trigger.",
 };
 const gameComponents = new Set([
 	"InteractionPrompt",
@@ -65,12 +67,12 @@ const gameComponents = new Set([
 ]);
 
 const componentGroups = {
-	Foundations: ["Button", "Card", "Separator", "Skeleton", "Spinner", "StatCard"],
+	Foundations: ["AnimatedNumber", "Button", "Card", "Separator", "Skeleton", "Spinner", "StatCard"],
 	Forms: ["Checkbox", "ColorPicker", "Combobox", "DatePicker", "Inputs", "MultiSelectMenu", "RadioGroup", "SelectMenu", "Slider", "Switch", "Textarea", "Toggle"],
 	Navigation: ["Breadcrumbs", "CommandPalette", "DropdownMenu", "Pagination", "Tabs"],
 	Feedback: ["Alert", "Badge", "EmptyState", "Progress", "Toast", "Tooltip"],
 	Overlays: ["Drawer", "Modal", "Popover"],
-	Data: ["Accordion", "Avatar", "Calendar", "DataTable", "FileUpload", "Kbd"],
+	Data: ["Accordion", "Avatar", "AvatarGroup", "Calendar", "DataTable", "FileUpload", "Kbd"],
 	GameUI: ["InteractionPrompt", "ObjectiveTracker", "ShopItem", "TargetList"],
 	Theming: ["ThemeToggle"],
 };
@@ -87,6 +89,8 @@ const componentUseCases = {
 	ColorPicker: ["theme settings", "vehicle or clothing color", "hex and opacity editing"],
 	Popover: ["anchored contextual controls", "small detail panels", "quick settings"],
 	Drawer: ["mobile detail panel", "settings panel", "secondary workflow"],
+	AvatarGroup: ["party or crew members", "online players", "shared access", "participants"],
+	AnimatedNumber: ["money or balance", "live counters", "prices and totals", "scores"],
 };
 
 const componentGuides = {

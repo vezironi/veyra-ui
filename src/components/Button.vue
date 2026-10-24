@@ -23,13 +23,13 @@ const sizes = {
 };
 
 const variants = {
-    primary: "border border-border bg-bg-muted text-text-primary hover:bg-bg-muted-hover active:bg-bg-muted-active",
+    primary: "border border-transparent bg-bg-muted text-text-primary hover:bg-bg-muted-hover active:bg-bg-muted-active",
     secondary: "text-text-primary hover:bg-bg-muted active:bg-bg-muted-hover",
     solid: "border border-inverse bg-inverse text-text-inverse hover:bg-inverse/90 active:bg-inverse/80",
     outline: "border border-border text-text-primary hover:bg-bg-surface active:bg-bg-muted",
-    danger: "border border-danger/25 bg-danger/10 text-danger hover:bg-danger/15 active:bg-danger/20",
-    success: "border border-success/25 bg-success/10 text-success hover:bg-success/15 active:bg-success/20",
-    warning: "border border-warning/25 bg-warning/10 text-warning hover:bg-warning/15 active:bg-warning/20",
+    danger: "border border-transparent bg-danger/10 text-danger hover:bg-danger/15 active:bg-danger/20",
+    success: "border border-transparent bg-success/10 text-success hover:bg-success/15 active:bg-success/20",
+    warning: "border border-transparent bg-warning/10 text-warning hover:bg-warning/15 active:bg-warning/20",
 };
 </script>
 

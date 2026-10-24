@@ -129,7 +129,7 @@
 				role="dialog"
 				aria-modal="true"
 				aria-label="Command palette"
-				class="w-full max-w-xl overflow-hidden rounded-xl border border-border bg-bg-base shadow-2xl"
+				class="w-full max-w-xl overflow-hidden rounded-2xl border border-border bg-bg-surface shadow-2xl"
 			>
 				<div class="flex items-center gap-3 border-b border-border px-4">
 					<Search class="size-4 shrink-0 text-text-faint" />

@@ -86,7 +86,7 @@
 		<div
 			v-if="open"
 			role="menu"
-			class="absolute left-0 top-full z-50 mt-2 min-w-52 rounded-lg border border-border bg-bg-base p-1.5 shadow-xl"
+			class="absolute left-0 top-full z-50 mt-2 min-w-52 rounded-xl border border-border bg-bg-surface p-1.5"
 		>
 			<template
 				v-for="(item, index) in items"
@@ -103,11 +103,11 @@
 					type="button"
 					role="menuitem"
 					:disabled="item.disabled"
-					class="flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm hover:bg-bg-muted focus-visible:bg-bg-muted focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40"
+					class="flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40"
 					:class="
 						item.destructive
-							? 'text-danger hover:text-danger/80'
-							: 'text-text-muted hover:text-text-primary'
+							? 'text-danger hover:bg-danger/10 focus-visible:bg-danger/10 active:bg-danger/15'
+							: 'text-text-muted hover:bg-bg-muted hover:text-text-primary focus-visible:bg-bg-muted'
 					"
 					@click="choose(item.value)"
 				>

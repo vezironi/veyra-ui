@@ -13,7 +13,7 @@ Use `list_components` to search this catalog against the installed package's rea
 
 ## Forms and value entry
 
-- `Inputs`: single-line text, number, and other supported input types. Check the source for supported type names and label/error props.
+- `Inputs`: single-line `text`, `password` (built-in show/hide toggle), `email`, `number` (+/- stepper on the right, respects `min`, `max`, `step`), and `date` (DD / MM / YYYY mask). Check the source for label/error props.
 - `Textarea`: multi-line input; use for notes, descriptions, or longer messages.
 - `Checkbox`: a boolean option with label/description support.
 - `Switch`: a two-state setting where the on/off state should be immediately apparent, such as notifications or a feature toggle.
@@ -52,8 +52,10 @@ Use `list_components` to search this catalog against the installed package's rea
 - `Skeleton`: reserve the shape of content that is loading.
 - `EmptyState`: explain why a collection is empty and give a useful next action when one exists.
 - `Badge`: short status, category, or count.
-- `Avatar`: person or character identity with fallback support.
-- `StatCard`: compact metric.
+- `Avatar`: person or character identity with fallback support. `badge` adds a status dot (`badgeVariant`: `active` Online, `inactive` Offline, `busy` Do not disturb) with a hover tooltip; override the text with `badgeLabel` or turn the tooltip off with `:badge-tooltip="false"`.
+- `AvatarGroup`: several people at once (party, crew, participants); `items` takes `{ name?, src?, alt?, fallback? }`, `max` collapses the rest into a +N count, and `tooltip` shows each name on hover.
+- `StatCard`: compact metric. Optional `icon` (a component such as a Lucide icon), `suffix` ("/ 256"), `change` (percentage; positive is green, negative red) and `changeLabel` ("vs yesterday").
+- `AnimatedNumber`: inline value (money, counters, scores) where only the changed digits roll on update; pass a number or an already formatted string.
 - `Card`: group related content and actions on a surface.
 - `Accordion`: disclose optional grouped information.
 - `Separator`: divide related sections without adding another card.

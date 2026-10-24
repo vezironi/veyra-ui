@@ -113,7 +113,7 @@
 						:aria-describedby="description ? descriptionId : undefined"
 						:class="
 							cn(
-								'absolute inset-y-0 flex max-w-full flex-col border-border bg-bg-base shadow-2xl',
+								'absolute inset-y-0 flex max-w-full flex-col border-border bg-bg-surface shadow-2xl',
 								side === 'right' ? 'right-0 border-l' : 'left-0 border-r',
 								props.class,
 							)

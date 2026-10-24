@@ -73,7 +73,7 @@
 			role="dialog"
 			:class="
 				cn(
-					'absolute z-50 min-w-48 rounded-lg border border-border bg-bg-base p-3 shadow-xl',
+					'absolute z-50 min-w-48 rounded-xl border border-border bg-bg-surface p-3',
 					panelClass,
 				)
 			"

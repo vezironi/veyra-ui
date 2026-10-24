@@ -54,7 +54,7 @@
 	<section
 		:class="
 			cn(
-				'w-full rounded-xl border border-border bg-bg-surface p-4',
+				'w-full rounded-2xl border border-border bg-bg-surface p-4',
 				props.class,
 			)
 		"
@@ -68,7 +68,7 @@
 				</p>
 			</div>
 			<span
-				class="rounded-md border border-border bg-bg-muted px-2 py-1 text-xs font-medium tabular-nums text-text-muted"
+				class="rounded-full border border-border bg-bg-muted px-2 py-1 text-xs font-medium tabular-nums text-text-muted"
 				>{{ completion }}%</span
 			>
 		</header>
@@ -151,7 +151,7 @@
 			</div>
 			<button
 				type="button"
-				class="shrink-0 rounded-md bg-inverse px-3 py-1.5 text-xs font-semibold text-text-inverse transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-ring"
+				class="shrink-0 rounded-lg bg-inverse px-3 py-1.5 text-xs font-semibold text-text-inverse transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-ring"
 				@click="emit('complete', currentObjective.id)"
 			>
 				Complete task

@@ -121,7 +121,7 @@
 <template>
 	<div
 		:class="
-			cn('w-full overflow-hidden rounded-lg border border-border', props.class)
+			cn('w-full overflow-hidden rounded-2xl border border-border', props.class)
 		"
 	>
 		<div class="overflow-x-auto">

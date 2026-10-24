@@ -35,7 +35,7 @@
 </script>
 
 <template>
-	<section :class="cn('w-full overflow-hidden rounded-xl border border-border bg-bg-surface', props.class)" :aria-label="title">
+	<section :class="cn('w-full overflow-hidden rounded-2xl border border-border bg-bg-surface', props.class)" :aria-label="title">
 		<header class="flex items-center justify-between border-b border-border px-3.5 py-3"><div class="flex items-center gap-2"><span class="flex size-7 items-center justify-center rounded-md bg-bg-muted text-text-muted"><Crosshair class="size-3.5" /></span><h2 class="text-sm font-semibold text-text-primary">{{ title }}</h2></div><span class="text-[10px] tabular-nums text-text-faint">{{ visibleItems.length }} nearby</span></header>
 		<ul v-if="visibleItems.length" class="p-1.5">
 			<li v-for="item in visibleItems" :key="item.id">

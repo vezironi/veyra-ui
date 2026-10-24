@@ -181,7 +181,7 @@
 				:id="id"
 				ref="panel"
 				role="listbox"
-				class="fixed z-[9999] rounded-lg border border-border bg-bg-base p-1.5 shadow-xl"
+				class="fixed z-[9999] rounded-xl border border-border bg-bg-surface p-1.5"
 				:style="panelStyle"
 				@keydown="handleKeydown"
 			>

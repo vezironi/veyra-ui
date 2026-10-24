@@ -69,7 +69,7 @@ const sizes = {
 <template>
     <div
         v-if="variant === 'overlay'"
-        :class="cn('relative w-full aspect-video rounded-lg border border-border bg-bg-surface min-w-0 overflow-hidden', props.class)"
+        :class="cn('relative w-full aspect-video rounded-2xl border border-border bg-bg-surface min-w-0 overflow-hidden', props.class)"
     >
         <img
             v-if="image"
@@ -102,7 +102,7 @@ const sizes = {
 
     <div
         v-else-if="variant === 'horizontal'"
-        :class="cn('w-full flex gap-x-3 rounded-lg border border-border bg-bg-surface min-w-0', sizes[size].padding, props.class)"
+        :class="cn('w-full flex gap-x-3 rounded-2xl border border-border bg-bg-surface min-w-0', sizes[size].padding, props.class)"
     >
         <div
             v-if="image"
@@ -113,7 +113,7 @@ const sizes = {
                 :src="image"
                 :alt="imageAlt"
                 draggable="false"
-                class="size-full object-contain rounded-md"
+                class="size-full object-contain rounded-lg"
             />
         </div>
 
@@ -157,12 +157,12 @@ const sizes = {
 
     <div
         v-else
-        :class="cn('group w-full flex flex-col rounded-lg border border-border bg-bg-surface min-w-0 overflow-hidden', props.class)"
+        :class="cn('group w-full flex flex-col rounded-2xl border border-border bg-bg-surface min-w-0 overflow-hidden', props.class)"
     >
         <div v-if="image" class="shrink-0" :class="{ [sizes[size].imageInset]: !imageFlush }">
             <div
                 class="overflow-hidden"
-                :class="imageFlush ? 'border-b border-border' : 'rounded-md border border-border'"
+                :class="imageFlush ? 'border-b border-border' : 'rounded-lg border border-border'"
             >
                 <img
                     :src="image"

@@ -20,7 +20,7 @@
 	<section
 		:class="
 			cn(
-				'flex w-full flex-col items-center justify-center gap-y-3 rounded-lg border border-dashed border-border px-6 py-10 text-center',
+				'flex w-full flex-col items-center justify-center gap-y-3 rounded-2xl border border-dashed border-border px-6 py-10 text-center',
 				props.class,
 			)
 		"

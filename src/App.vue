@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { Users } from "@lucide/vue";
 import {
+    AnimatedNumber,
     Accordion,
     Alert,
     Avatar,
+    AvatarGroup,
     Badge,
     Breadcrumbs,
     Button,
@@ -63,6 +66,11 @@ const drawerOpen = ref(false);
 const commandOpen = ref(false);
 const toastOpen = ref(false);
 const name = ref("Veyra");
+const password = ref("");
+const email = ref("");
+const quantity = ref(3);
+const ratio = ref(1.5);
+const birthday = ref("");
 const notes = ref("A small, themeable component kit for Vue.");
 const framework = ref("vue");
 const uploadedFiles = ref<File[]>([]);
@@ -71,6 +79,25 @@ const tableLoading = ref(false);
 const userSort = ref<{ key: string; direction: "asc" | "desc" } | null>(null);
 const lastCommand = ref("None selected");
 const shopQuantity = ref(1);
+const activeUsers = ref(2480);
+const balance = ref(1480);
+const crew = [
+    { name: "Vera Ashford", fallback: "VA" },
+    { name: "Milo Kane", fallback: "MK" },
+    { name: "Jade Dorsey", fallback: "JD" },
+    { name: "Aron Reyes", fallback: "AR" },
+    { name: "Sila Lund", fallback: "SL" },
+    { name: "Tomas Eke", fallback: "TE" },
+];
+let activeUsersTimer: ReturnType<typeof setInterval> | undefined;
+
+// Simulated live metric so the StatCard digit animation is visible in the gallery.
+onMounted(() => {
+    activeUsersTimer = setInterval(() => {
+        activeUsers.value += Math.floor(Math.random() * 7) - 2;
+    }, 2000);
+});
+onBeforeUnmount(() => clearInterval(activeUsersTimer));
 const activeObjective = ref("visit");
 const selectedTarget = ref<string | number | null>(null);
 const lastGameAction = ref("No action yet");
@@ -163,8 +190,11 @@ const menuItems = [
                     <div class="flex items-center gap-3">
                         <Avatar fallback="VA" size="sm" />
                         <Avatar fallback="UI" badge />
+                        <Avatar fallback="ZZ" badge badge-variant="inactive" />
                         <Avatar fallback="UX" size="lg" badge badge-variant="busy" />
                     </div>
+                    <AvatarGroup :items="crew" :max="4" tooltip />
+                    <AvatarGroup :items="crew.slice(0, 3)" size="sm" />
                 </section>
 
                 <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
@@ -281,8 +311,32 @@ const menuItems = [
 
                 <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
                     <h2 class="text-sm font-semibold text-text-primary">Inputs</h2>
-                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Project name
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Text
                         <Inputs v-model="name" placeholder="Project name" />
+                    </label>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Password
+                        <Inputs v-model="password" type="password" placeholder="Enter a password" />
+                    </label>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Email
+                        <Inputs v-model="email" type="email" placeholder="you@example.com" />
+                    </label>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Number (1-10)
+                        <Inputs v-model="quantity" type="number" :min="1" :max="10" />
+                    </label>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Number, step 0.5
+                        <Inputs v-model="ratio" type="number" :min="0" :step="0.5" size="sm" />
+                    </label>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Date
+                        <Inputs v-model="birthday" type="date" />
+                    </label>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-xs text-text-muted">Sizes</p>
+                        <Inputs size="sm" placeholder="Small" />
+                        <Inputs size="md" placeholder="Medium" />
+                        <Inputs size="lg" placeholder="Large" />
+                    </div>
+                    <label class="flex flex-col gap-1.5 text-xs text-text-muted">Disabled
+                        <Inputs placeholder="Not editable" disabled />
                     </label>
                 </section>
 
@@ -394,7 +448,18 @@ const menuItems = [
 
                 <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
                     <h2 class="text-sm font-semibold text-text-primary">StatCard</h2>
-                    <StatCard label="Active users" value="2,480" color="#22c55e" />
+                    <StatCard label="Online players" :icon="Users" :value="184" suffix="/ 256" :change="12" change-label="vs yesterday" />
+                    <StatCard label="Active users" :value="activeUsers.toLocaleString('en-US')" color="#22c55e" />
+                </section>
+
+                <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
+                    <h2 class="text-sm font-semibold text-text-primary">AnimatedNumber</h2>
+                    <p class="flex text-2xl font-bold text-text-primary"><span class="text-text-faint">$</span><AnimatedNumber :value="balance.toLocaleString('en-US')" /></p>
+                    <div class="flex gap-2">
+                        <Button size="sm" @click="balance = Math.max(0, balance - 40)">-$40</Button>
+                        <Button size="sm" @click="balance += 4">+$4</Button>
+                        <Button size="sm" @click="balance += 125">+$125</Button>
+                    </div>
                 </section>
 
                 <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
@@ -433,7 +498,12 @@ const menuItems = [
 
                 <section class="mb-4 flex w-full break-inside-avoid flex-col gap-y-3 rounded-xl border border-border bg-bg-surface p-4">
                     <h2 class="text-sm font-semibold text-text-primary">Tooltip</h2>
-                    <Tooltip content="A helpful hint"><Button variant="secondary">Hover or focus me</Button></Tooltip>
+                    <div class="flex flex-wrap gap-2">
+                        <Tooltip content="Top hint"><Button variant="secondary">Top</Button></Tooltip>
+                        <Tooltip content="Bottom hint" side="bottom"><Button variant="secondary">Bottom</Button></Tooltip>
+                        <Tooltip content="Left hint" side="left"><Button variant="secondary">Left</Button></Tooltip>
+                        <Tooltip content="Right hint" side="right"><Button variant="secondary">Right</Button></Tooltip>
+                    </div>
                 </section>
             </div>
             <footer class="mt-10 border-t border-border pt-5 text-xs text-text-faint">Edit a component under <code>src/components</code> and this gallery updates with hot reload.</footer>

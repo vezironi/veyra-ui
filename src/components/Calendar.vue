@@ -103,7 +103,7 @@ const cellBaseClass = "flex cursor-pointer items-center justify-center rounded-m
 </script>
 
 <template>
-    <div :class="cn('inline-flex flex-col gap-y-3 rounded-lg border border-border bg-bg-surface p-3', props.class)">
+    <div :class="cn('inline-flex flex-col gap-y-3 rounded-2xl border border-border bg-bg-surface p-3', props.class)">
         <div class="flex items-center justify-between">
             <button type="button" aria-label="Previous" :class="navButtonClass" @click="navigate(-1)">
                 <ChevronLeft class="size-4" />

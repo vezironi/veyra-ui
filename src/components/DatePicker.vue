@@ -200,7 +200,7 @@ onBeforeUnmount(() => {
             <div
                 v-if="open"
                 ref="menuRef"
-                class="fixed z-[9999] rounded-lg bg-bg-base shadow-2xl"
+                class="fixed z-[9999] rounded-2xl bg-bg-base"
                 :style="menuStyle"
             >
                 <Calendar

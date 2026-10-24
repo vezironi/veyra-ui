@@ -101,7 +101,7 @@
 			type="button"
 			:disabled="disabled"
 			:aria-label="label"
-			class="flex w-full flex-col items-center justify-center rounded-lg border border-dashed px-4 py-6 text-center transition-colors focus-visible:outline-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50"
+			class="flex w-full flex-col items-center justify-center rounded-2xl border border-dashed px-4 py-6 text-center transition-colors focus-visible:outline-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50"
 			:class="
 				dragging
 					? 'border-text-primary bg-bg-muted'
@@ -135,7 +135,7 @@
 			<li
 				v-for="file in files"
 				:key="`${file.name}-${file.size}-${file.lastModified}`"
-				class="flex min-w-0 items-center gap-2 rounded-md border border-border bg-bg-surface px-2.5 py-2"
+				class="flex min-w-0 items-center gap-2 rounded-lg border border-border bg-bg-surface px-2.5 py-2"
 			>
 				<component
 					:is="fileIcon(file)"

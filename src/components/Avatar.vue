@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import type { HTMLAttributes } from "vue";
     import { cn } from "../utils/cn";
+    import Tooltip from "./Tooltip.vue";
 
     const props = withDefaults(
         defineProps<{
@@ -10,6 +11,8 @@
             size?: "sm" | "md" | "lg";
             badge?: boolean;
             badgeVariant?: "active" | "inactive" | "busy";
+            badgeLabel?: string;
+            badgeTooltip?: boolean;
             class?: HTMLAttributes["class"];
         }>(),
         {
@@ -18,6 +21,7 @@
             size: "md",
             badge: false,
             badgeVariant: "active",
+            badgeTooltip: true,
         },
     );
 
@@ -31,6 +35,12 @@
         active: "bg-success",
         inactive: "bg-zinc-500",
         busy: "bg-danger",
+    };
+
+    const badgeLabels = {
+        active: "Online",
+        inactive: "Offline",
+        busy: "Do not disturb",
     };
 </script>
 
@@ -52,10 +62,22 @@
             {{ fallback }}
         </span>
 
-        <span
-            v-if="badge"
-            class="absolute bottom-0 right-0 size-3 rounded-full ring-2 ring-bg-base"
-            :class="badgeVariants[badgeVariant]"
-        />
+        <span v-if="badge" class="absolute bottom-0 right-0 flex">
+            <Tooltip v-if="badgeTooltip" :content="badgeLabel ?? badgeLabels[badgeVariant]">
+                <span
+                    role="img"
+                    :aria-label="badgeLabel ?? badgeLabels[badgeVariant]"
+                    class="size-3 rounded-full ring-2 ring-bg-base"
+                    :class="badgeVariants[badgeVariant]"
+                />
+            </Tooltip>
+            <span
+                v-else
+                role="img"
+                :aria-label="badgeLabel ?? badgeLabels[badgeVariant]"
+                class="size-3 rounded-full ring-2 ring-bg-base"
+                :class="badgeVariants[badgeVariant]"
+            />
+        </span>
     </span>
 </template>

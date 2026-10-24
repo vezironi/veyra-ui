@@ -43,7 +43,7 @@ onBeforeUnmount(() => document.removeEventListener("keydown", handleKeydown));
                 role="dialog"
                 aria-modal="true"
                 :aria-label="title"
-                :class="cn('flex w-full flex-col rounded-lg border border-border bg-bg-base shadow-2xl', props.class)"
+                :class="cn('flex w-full flex-col rounded-2xl border border-border bg-bg-surface shadow-2xl', props.class)"
                 :style="{ maxWidth: width }"
             >
                 <div

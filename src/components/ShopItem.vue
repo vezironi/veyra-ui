@@ -2,6 +2,7 @@
 	import { computed, watch, type HTMLAttributes } from "vue";
 	import { Minus, Plus } from "@lucide/vue";
 	import { cn } from "../utils/cn";
+	import AnimatedNumber from "./AnimatedNumber.vue";
 	import Button from "./Button.vue";
 
 	const props = withDefaults(
@@ -65,7 +66,7 @@
 	<article
 		:class="
 			cn(
-				'w-full rounded-xl border border-border bg-bg-surface p-4 transition-colors',
+				'w-full rounded-2xl border border-border bg-bg-surface p-4 transition-colors',
 				(disabled || outOfStock) && 'opacity-60',
 				props.class,
 			)
@@ -81,8 +82,8 @@
 						<h3 class="truncate text-sm font-semibold text-text-primary">{{ name }}</h3>
 						<p v-if="description" class="mt-1 text-xs text-text-muted">{{ description }}</p>
 					</div>
-					<span class="shrink-0 rounded-md border border-border bg-bg-muted px-2 py-0.5 text-sm font-semibold tabular-nums text-text-primary">
-						<span class="text-text-faint">{{ currency }}</span>{{ unitPrice.toLocaleString() }}
+					<span class="inline-flex shrink-0 rounded-full border border-border bg-bg-muted px-2 py-0.5 text-sm font-semibold tabular-nums text-text-primary">
+						<span class="text-text-faint">{{ currency }}</span><AnimatedNumber :value="unitPrice.toLocaleString()" />
 					</span>
 				</div>
 				<p v-if="stock !== undefined" class="mt-2 flex items-center gap-1.5 text-xs text-text-faint">
@@ -94,12 +95,12 @@
 		<div class="mt-4 flex items-center gap-3 border-t border-border pt-3">
 			<div class="flex h-9 items-stretch overflow-hidden rounded-lg border border-border bg-bg-surface">
 				<button type="button" :disabled="disabled || outOfStock || quantity <= 1" aria-label="Decrease quantity" class="flex w-8 items-center justify-center text-text-muted transition-colors hover:bg-bg-muted-hover hover:text-text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-40" @click="changeQuantity(-1)"><Minus class="size-3.5" /></button>
-				<output class="flex min-w-9 items-center justify-center border-x border-border bg-bg-inset px-1 text-sm font-semibold tabular-nums text-text-primary">{{ quantity }}</output>
+				<output class="flex min-w-9 items-center justify-center border-x border-border bg-bg-inset px-1 text-sm font-semibold tabular-nums text-text-primary"><AnimatedNumber :value="quantity" /></output>
 				<button type="button" :disabled="disabled || outOfStock || quantity >= maxQuantity" aria-label="Increase quantity" class="flex w-8 items-center justify-center text-text-muted transition-colors hover:bg-bg-muted-hover hover:text-text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-40" @click="changeQuantity(1)"><Plus class="size-3.5" /></button>
 			</div>
 			<div class="min-w-0 flex-1 text-right">
 				<p class="text-[10px] uppercase tracking-wider text-text-faint">Total</p>
-				<p class="text-sm font-semibold tabular-nums text-text-primary"><span class="text-text-faint">{{ currency }}</span>{{ total.toLocaleString() }}</p>
+				<p class="flex justify-end text-sm font-semibold tabular-nums text-text-primary"><span class="text-text-faint">{{ currency }}</span><AnimatedNumber :value="total.toLocaleString()" /></p>
 			</div>
 			<Button size="sm" :disabled="disabled || outOfStock" @click="confirm">{{ outOfStock ? "Out of stock" : actionText }}</Button>
 		</div>
